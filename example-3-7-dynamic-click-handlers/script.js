@@ -19,6 +19,7 @@ for (let i = 0; i < 100; i++) {
   listItem.addEventListener("click", (e) => changeListItemColor(e.target));
 
   numberList.appendChild(listItem);
+  console.log(numberList);
 }
 
 /**

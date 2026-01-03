@@ -26,6 +26,8 @@
     { id: 3, firstName: "Tyne", lastName: "Crow" },
     { id: 4, firstName: "David", lastName: "Huang" }
   ];
+
+   const foo = { bar: "Hello" };
 </script>
 
 <!-- The "HTML" section of the doc starts here. We can use a mix of
@@ -64,6 +66,12 @@
 <StaffList allStaff={gradSchoolStaff} />
 
 <!-- An "internal" style. CSS defined here will only apply to this component. -->
+
+
+
+<p>foo.bar = {foo}</p>
+<button on:click={() => (foo.bar = "Goodbye")}>Click me</button>
+
 <style>
   .buttonPanel {
     display: flex;
