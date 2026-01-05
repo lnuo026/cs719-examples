@@ -82,6 +82,8 @@ app.get("/", (req, res) => {
  * This route handler will respond to a GET request to "/api/people" (e.g. http://localhost:3000/api/people).
  * It wil return a JSON array of all people by default. Or, if the "firstName" query parameter is supplied,
  * it will instead return an array of only those people whose firstName matches the query.
+ 
+*  http://localhost:3000/api/people?firstName=Ash
  */
 app.get("/api/people", (req, res) => {
   /**
@@ -101,6 +103,10 @@ app.get("/api/people", (req, res) => {
 /**
  * This route handler will respond to a GET request to "/api/people/:id", where :id is the id of a person.
  * If that person exists, it will be returned as JSON. Otherwise, a 404 (Not Found) error code will be returned.
+ * 
+ 
+* {"id":2,"firstName":"Jane","lastName":"Smith","email":"jane.smith@example.com"}
+
  */
 app.get("/api/people/:id", (req, res) => {
   // req.params contains all route parameters. Here, we're getting the value of the id param.
@@ -121,10 +127,25 @@ app.get("/api/people/:id", (req, res) => {
  * person to the "database", based on the info contained in the request body. It will return a
  * 201 (Created) status code, along with the URL location of the new person, and a JSON
  * representation of that person.
+ * 
+ * 
+ * {
+  "firstName": "Ash",
+  "lastName": "Ketchum",
+  "email": "ash.ketchum@pokemon.com"
+}
+ *
+
+  const { firstName, lastName, email } = req.body;
+const firstName = req.body.firstName;
+const lastName = req.body.lastName;
+const email = req.body.email;
+
  */
 app.post("/api/people", (req, res) => {
 
   const { firstName, lastName, email } = req.body;
+  
 
   const newPerson = createPerson(firstName, lastName, email);
 
