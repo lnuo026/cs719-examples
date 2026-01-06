@@ -15,6 +15,7 @@ const router = express.Router({ mergeParams: true });
 /**
  * POST /api/customers/:customerId/orders - Create a new order for a customer. If the customer is not found, return 404.
  * Otherwise, a 201 will be returned with a Location pointing to that new order.
+ * create顾客 + 订单 
  */
 router.post("/", (req, res) => {
   const customer = retrieveCustomerById(req.params.customerId);
@@ -29,9 +30,13 @@ router.post("/", (req, res) => {
     .json(newOrder);
 });
 
+
+
+
 /**
  * GET /api/customers/:customerId/orders - Get all orders for a customer. If the customer doesn't exist, return a 404.
  * Otherwise, a JSON array of that customer's orders will be returned.
+ *  找到一个顾客的所有订单 
  */
 router.get("/", (req, res) => {
   console.log(req.params);
@@ -40,10 +45,15 @@ router.get("/", (req, res) => {
   return res.json(retrieveOrdersForCustomer(customer.id));
 });
 
+
+
+
+
 /**
  * GET /api/customers/:customerId/orders/:orderId - Get the order with the given order id and customer id.
  *
  * If the order doesn't exist, or it belongs to a different customer, a 404 will be returned instead.
+ * 找到 顾客id 对应 order ID
  */
 router.get("/:orderId", (req, res) => {
   const customer = retrieveCustomerById(req.params.customerId);
@@ -51,6 +61,8 @@ router.get("/:orderId", (req, res) => {
 
   const order = retrieveOrderById(req.params.orderId);
 
+  //1 ：  !order  or
+  //2 ：order.customerId != customer.id 
   if (!order || order.customerId != customer.id) return res.sendStatus(404);
   return res.json(order);
 });

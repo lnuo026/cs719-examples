@@ -29,6 +29,7 @@ router.post("/", (req, res) => {
  * customers whose names or email addresses match the search.
  */
 router.get("/", (req, res) => {
+  //不管query后面跟着什么“关键词” ，只要是req.query.（url里面 ？后面的字符串）；
   const search = req.query.search;
 
   if (!search) return res.json(retrieveCustomers());

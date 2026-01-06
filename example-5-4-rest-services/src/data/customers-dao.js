@@ -101,9 +101,13 @@ export function retrieveCustomers() {
  *
  * @returns an array of matching customers (an empty array if no matches)
  */
+//*  search： 是一个 字符串,通常来自 HTTP 请求的 query 参数 , 用同一个 search 字符串，去分别比对多个字段。
 export function retrieveCustomersSearch(search) {
+  //没有 search（undefined / "" / null）， 直接返回所有 customers
   if (!search) return retrieveCustomers();
 
+  //有 search 的时候才用 filter ，条件是 true → 元素留下  / 条件是 false → 元素被丢弃
+  // filter() 不满足条件的元素会被“丢掉”。【】于是就返回了一个空数组
   return customers.filter(
     (c) => match(c.firstName, search) || match(c.lastName, search) || match(c.email, search)
   );
@@ -118,6 +122,8 @@ export function retrieveCustomersSearch(search) {
  *
  * @returns true if the customerData contains the given search string, case insensitive.
  */
+//string.includes(substring) ：Js 字符串（String）和数组（Array）自带的方法 ，判断：“里面包不包含某个东西”  ，
+// 返回值是 boolean：true / false  ,大小写敏感
 function match(customerData, search) {
   return customerData.toLowerCase().includes(search.toLowerCase());
 }
@@ -166,11 +172,14 @@ export function updateCustomer(id, updateData) {
  * @throws an error if throwIfNotFound is true and there's no matching customer
  */
 export function deleteCustomer(id, throwIfNotFound = false) {
+    //returns that element index
   const index = customers.findIndex((c) => c.id == id);
 
   // Error check
   if (throwIfNotFound && index < 0) throw `Customer ${id} not found!`;
 
   // Delete customer
+    //splice(start: number, deleteCount?: number): T[];
+    //从 customers 数组中，从 index 开始，删 1 个元素 ，修改原数组
   if (index >= 0) customers.splice(index, 1);
 }
