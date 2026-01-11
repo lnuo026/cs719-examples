@@ -1,5 +1,7 @@
 <script>
+  // articles.js的源资料 ，再each循环挨个取出
   import { articles } from "$lib/js/articles.js";
+  //内置&page store , 自带property $page.url.pathname
   import { page } from "$app/stores";
 </script>
 
@@ -25,6 +27,7 @@
     <slot />
   </div>
 </div>
+
 
 <style>
   .container {
