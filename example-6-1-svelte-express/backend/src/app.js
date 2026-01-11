@@ -3,6 +3,7 @@
  */
 
 // Configure environment variables
+//标准环境import ,app是主入口，只mount routes + listening端口
 import dotenv from "dotenv";
 dotenv.config();
 
