@@ -1,4 +1,6 @@
 <script>
+
+  // 这个页面里是 rend 所有的页面，但是只有nav  ，主要的 + page通过<slot /> 加载
   import "$lib/css/app.css";
 
   // This is a special Svelte store which provides info about the current page.
