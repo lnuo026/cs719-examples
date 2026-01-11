@@ -5,7 +5,7 @@ import { derived, writable } from "svelte/store";
  * Create a store called "counterStore" with the initial value of 0.
  *
  * Export it so we can import it into other places in our code.
- */
+ */3
 export const counterStore = writable(0);
 
 /**
