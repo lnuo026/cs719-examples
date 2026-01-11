@@ -4,6 +4,7 @@
   /**
    * Define a special prop called "data", which will be automatically filled by SvelteKit, with the result
    * of running the load() function defined in +page.js.
+   * load()返回single customers
    */
   export let data;
 </script>

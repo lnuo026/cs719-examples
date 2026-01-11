@@ -8,6 +8,8 @@ const router = express.Router();
 /**
  * This route handler will respond to a GET request to the "/" path (e.g. http://localhost:3000/). It will
  * return an HTTP 200 (OK) response with the given JSON data.
+ * 根routes ，挂在api
+ * 
  */
 router.get("/", (req, res) => {
   /**

@@ -3,6 +3,9 @@
  * Express server.
  *
  * Note: Any env variables we import into our code which will run on the browser, MUST be prefixed with PUBLIC_.
+ * 
+ * PUBLIC_API_BASE_URL=http://localhost:3000/api
+ * 
  */
 import { PUBLIC_API_BASE_URL } from "$env/static/public";
 
