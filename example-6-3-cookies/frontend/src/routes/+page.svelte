@@ -11,6 +11,7 @@
    * Call the parseDocumentCookies() function to directly retrieve all cookies on the browser from the document.cookie object, without
    * going via the server at all.
    *
+   *Object.keys(对象) ，把对象里的“键名”全部拿出来，变成一个数组
    * Note; This will NOT retrieve any cookies marked as HTTP-only, for security purposes.
    */
   let browserCookies = parseDocumentCookies();
