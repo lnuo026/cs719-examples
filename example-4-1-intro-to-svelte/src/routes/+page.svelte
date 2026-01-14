@@ -30,6 +30,8 @@
    const foo = { bar: "Hello" };
 </script>
 
+
+
 <!-- The "HTML" section of the doc starts here. We can use a mix of
 	regular HTML, Svelte components, and {} syntax. -->
 <h1>Hello, world!</h1>

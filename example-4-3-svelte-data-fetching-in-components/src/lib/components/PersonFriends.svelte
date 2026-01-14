@@ -16,7 +16,7 @@
       return;
     }
 
-    // Fetch the friends
+    // Fetch the friends ,这个url拿到的是具体的id的朋友
     const response = await fetch(`https://people-db.trex-sandwich.com/people/${id}/friends`);
 
     // Get friends as JS object array
