@@ -1,10 +1,11 @@
 /**
  * This function will be called by SvelteKit when this route loads (or when the [id] changes).
  * It will load the friends of the person with the given id.
- */
+*/
+
+//“读取父级 layout 的 load() 返回的数据” 
 export async function load({ fetch, params, parent }) {
-  // Any "parent" data, such as that in the root layout load() function, will be available here.
-  // We are using this to find the person with the matching id, which we already loaded before.
+  //调用“最近一层父 layout 的 load()”，并拿到它 return 的数据  parent()内置提供的函数
   const parentData = await parent();
   const person = parentData.people.find((p) => p.id == params.id);
   const name = person.firstName;
@@ -17,4 +18,10 @@ export async function load({ fetch, params, parent }) {
 
   // Return the original person's name, and that person's friends.
   return { name, friends };
+}
+
+
+export async function load({fetch , params ,parent}){
+  const parentData = await parent();
+  const person  =  parentData.people
 }

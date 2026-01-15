@@ -1,3 +1,4 @@
+// uuid 是一个 第三方 npm 库，专门用来生成 ，全世界几乎不可能重复的唯一 ID
 import { v4 as uuid } from "uuid";
 import { writable } from "svelte/store";
 
@@ -10,6 +11,7 @@ const INITIAL_THINGS = [
   { id: uuid(), description: "Winning an argument with yourself in the shower" }
 ];
 
+// 一个“全局可响应的数组”
 export const favouriteThingsStore = writable(INITIAL_THINGS);
 
 /**
@@ -26,11 +28,13 @@ export const favouriteThingsStore = writable(INITIAL_THINGS);
  * @param {string} description the description of the new favourite thing to add.
  */
 export function addThing(description) {
+  // // 创建一条新的 favourite thing
   const newThing = { id: uuid(), description };
+  // store.update((当前值things) => 新值 ),把它加到 store 里的数组末尾;
   favouriteThingsStore.update((things) => [...things, newThing]);
 }
 
-/**
+/** 
  * This time we are using update() in combination with JavaScript array's filter() function to filter
  * out the thing with the matching id. This will result in the creation of a new array containing everything
  * except the thing with the given id.
@@ -52,15 +56,16 @@ export function removeThing(id) {
  * @param {string} id the id of the thing to modify
  * @param {string} newDescription the new description
  */
+
+
+//在 favouriteThingsStore 里，找到 id 相同的那一项，把它的 description 改掉，其他项保持不变。
+    //map()：一个一个“检查 + 生成新数组” ，things 是 store 当前的“旧值”
+    //数组里本来放的就是“对象”， 改其中一个”，就必须“返回一个新的对象来替换它”。
 export function editThing(id, newDescription) {
-  // Update the favourite things store. Given the current array of things...
   favouriteThingsStore.update((things) =>
-    // Using map() return a new array...
     things.map((t) => {
       // Where, if the id of the thing at that index matches the supplied id, create a new object...
       if (t.id === id) return { id, description: newDescription };
-
-      // Otherwise just use the existing thing.
       return t;
     })
   );
