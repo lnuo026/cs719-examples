@@ -37,11 +37,6 @@ router.get("/", (req, res) => {
   return res.json(retrieveOrdersForCustomer(req.customer.id));
 });
 
-/**
- * GET /api/customers/:customerId/orders/:orderId - Get the order with the given id.
- *
- * If the order doesn't exist, or it belongs to a different customer, a 404 will be returned instead.
- */
 router.get("/:orderId", (req, res) => {
   const order = retrieveOrderById(req.params.orderId);
 

@@ -81,6 +81,7 @@
    *
    * If the post fails, display a message alerting us of that fact. If it succeeds (i.e.
    * returns a 201 Created response), instead reload the page data.
+   好像是来自 NewCustomerForm 的数据？ e
    */
   async function handleAddCustomer(e) {
     const customer = e.detail;

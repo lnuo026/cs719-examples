@@ -1,4 +1,5 @@
 <script>
+  // createEventDispatcher = 子组件用来“向父组件发消息”的工具
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
@@ -6,6 +7,7 @@
   let lastName = "";
   let email = "";
 
+  // dispatch("事件名", 数据);  detail = 子组件 dispatch 的第二个参数
   function handleSubmit() {
     dispatch("submit", { firstName, lastName, email });
   }

@@ -10,8 +10,11 @@
    */
   async function fetchPeople() {
     const response = await fetch("https://people-db.trex-sandwich.com/people");
+    // data 一般是一个数组，比如：[{...},{...},{...}]
     const data = await response.json();
+    //“当前正在查看 / 使用的那个人” ， 它是 一个对象，不是数组 ，“默认选中第一个人”
     currentPerson = data[0];
+    // 	把整个数组保存到 people ，源数组保留
     people = data;
   }
 
@@ -26,7 +29,11 @@
     <h2>People</h2>
     <!-- Display a list of all people loaded from trex-sandwich. -->
     {#each people as person (person.id)}
-      <!-- For each one, display a button. When clicked, set the currentPerson to that person. -->
+      <!--
+     For each one, display a button. When clicked, set the currentPerson to that person.
+    点击这个按钮时：把 currentPerson 设为你点的那个人。  
+      加括号的作用只有一个： 明确告诉 JS：这是一个表达式 ，只是一个正常的 赋值表达式 
+      -->
       <button class="person" on:click={() => (currentPerson = person)}>
         <h3>{person.firstName} {person.lastName}</h3>
         <p>{person.info}</p>

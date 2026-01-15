@@ -72,6 +72,7 @@ router.get("/:customerId", useCustomerFromPath, (req, res) => {
  */
 router.patch("/:customerId", useCustomerFromPath, (req, res) => {
   try {
+    // 是“已经验证存在的 customer id” ，useCustomerFromPath 的挂载
     updateCustomer(req.customer.id, req.body);
     return res.sendStatus(204);
   } catch (err) {

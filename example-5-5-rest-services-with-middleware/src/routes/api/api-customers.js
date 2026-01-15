@@ -88,3 +88,4 @@ import customerOrdersRoutes from "./api-customer-orders.js";
 router.use("/:customerId/orders", useCustomerFromPath, customerOrdersRoutes);
 
 export default router;
+
