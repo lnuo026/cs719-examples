@@ -32,8 +32,7 @@
       <!--
      For each one, display a button. When clicked, set the currentPerson to that person.
     点击这个按钮时：把 currentPerson 设为你点的那个人。  
-      加括号的作用只有一个： 明确告诉 JS：这是一个表达式 ，只是一个正常的 赋值表达式 
-      -->
+      加括号的作用只有一个： 明确告诉 JS：这是一个表达式 ，只是一个正常的 赋值表达式 -->
       <button class="person" on:click={() => (currentPerson = person)}>
         <h3>{person.firstName} {person.lastName}</h3>
         <p>{person.info}</p>
