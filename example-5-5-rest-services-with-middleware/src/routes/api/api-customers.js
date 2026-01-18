@@ -10,12 +10,36 @@ import { useCustomerFromPath } from "../../middleware/customers-middleware.js";
 
 const router = express.Router();
 
+
+
+
+
+
+//test：
+router.post("/", (req, res) => {
+  console.log("测试post");
+  const body = req.body;
+  return res.sned({
+    sendStatus: 0 ,
+    msg: "成功" ,
+    data : body
+  });
+});
+
+
+
+
+
+
+
+
 /**
  * POST /api/customers - Creates a new customer.
  *
  * A 201 (created) response will be returned, along with a Location header pointing to that customer,
  * and a JSON representation of that cusetomer.
  */
+
 router.post("/", (req, res) => {
   const newCustomer = createCustomer(req.body);
   const location = `/api/customers/${newCustomer.id}`;
@@ -86,6 +110,8 @@ import customerOrdersRoutes from "./api-customer-orders.js";
  * the customer is not found.
  */
 router.use("/:customerId/orders", useCustomerFromPath, customerOrdersRoutes);
+
+
 
 export default router;
 

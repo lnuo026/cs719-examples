@@ -17,7 +17,6 @@ import { retrieveCustomerById } from "../data/customers-dao.js";
  */
 export function useCustomerFromPath(req, res, next) {
   const customer = retrieveCustomerById(req.params.customerId);
-
   if (!customer) return res.status(404).json(`Customer ${req.params.customerId} not found!`);
 
   req.customer = customer;
